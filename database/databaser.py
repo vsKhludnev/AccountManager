@@ -1,11 +1,20 @@
 import sqlite3
+from services.config_log import logger
+
+logger = logger.bind(module='databaser')
 
 class Databaser():
     def __init__(self, database_name='Database.db'):
+        logger.debug('Initial Databaser class')
         self.connect = sqlite3.connect(database_name)
         self.cursor = self.connect.cursor()
 
-        self.cursor.execute('CREATE TABLE IF NOT EXISTS Notes(id integer, title text, login text, password text, other text)')
+        try:
+            self.cursor.execute('CREATE TABLE IF NOT EXISTS Notes(id integer, title text, login text, password text, other text)')
+        except:
+            logger.error("Can't create database file")
+        else:
+            logger.info(f'{database_name} is create')
 
     def __close(self):
         self.connect.commit()
