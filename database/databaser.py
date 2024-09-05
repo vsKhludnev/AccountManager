@@ -8,9 +8,9 @@ class Databaser():
         self.cursor = self.connect.cursor()
 
         try:
-            self.cursor.execute('CREATE TABLE IF NOT EXISTS Notes(id integer, title text, login text, password text, other text)')
-        except:
-            logger.error("Can't create database file")
+            self.cursor.execute('CREATE TABLE Notes(id integer, title text, login text, password text, other text)')
+        except sqlite3.OperationalError:
+            logger.warning('Table Notes already exists')
         else:
             logger.info(f'{database_name} is create')
 
