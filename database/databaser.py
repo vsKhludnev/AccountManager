@@ -1,8 +1,6 @@
 import sqlite3
 from services.config_log import logger
 
-logger = logger.bind(module='databaser')
-
 class Databaser():
     def __init__(self, database_name='Database.db'):
         logger.debug('Initial Databaser class')
