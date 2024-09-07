@@ -2,7 +2,7 @@ import sqlite3
 from services.config_log import logger
 
 class Databaser():
-    def __init__(self, database_name='Database.db'):
+    def __init__(self, database_name='database\Database.db'):
         logger.debug('Initial Databaser class')
         self.connect = sqlite3.connect(database_name)
         self.cursor = self.connect.cursor()
