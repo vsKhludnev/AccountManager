@@ -6,3 +6,7 @@
 /database/__pycache__
 /gui/__pycache__
 /services/__pycache__
+
+# Базы данных
+/database/Database.db
+/database/Database_test.db
