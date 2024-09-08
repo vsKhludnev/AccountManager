@@ -13,6 +13,7 @@ class Databaser():
         self.connect.commit()
         self.connect.close()
 
+
     # Добавление данных в таблицу
     def add_data(self, data):
         logger.debug('Initial add_data function')
@@ -27,13 +28,14 @@ class Databaser():
         
 
     # Вывод общего списка данных (только id и названия)
-    def get_list_data(self):
+    def get_general_data(self):
         logger.debug('Initial output general information')
         self.cursor.execute('SELECT id, title FROM Notes')
         return self.cursor.fetchall()
 
+
     # Вывод конкретных данных по id
-    def get_definite_data(self, id):
+    def get_detail_data(self, id):
         logger.debug(f'Initial output data by id={id}')
         self.cursor.execute('SELECT * FROM Notes WHERE id=?', (id,))
         return self.cursor.fetchall()
